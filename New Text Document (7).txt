@@ -1,0 +1,74 @@
+name: 3. PCF/ Restart App
+on:
+  workflow_dispatch:
+    inputs:
+      foundation:
+        type: choice
+        description: Foundation
+        required: true
+        options:
+          - SEA
+          - EAS
+      platform:
+        type: choice
+        description: Platform
+        required: true
+        options:
+          - SEA
+          - EAS
+      appEnvironment:
+        type: choice
+        description: App Environment
+        required: true
+        options:
+          - SB
+          - DEV
+          - UAT
+          - PROD
+      pcfEnvironment:
+        type: choice
+        description: PCF Environment
+        required: true
+        options:
+          - DEV
+          - TST
+          - UAT
+          - PROD
+      incidentTicket:
+        type: string
+        required: false
+        default: ''
+      changeTicket:
+        type: string
+        required: false
+        default: ''
+env:
+  github_token: ${{ secrets.GIT_HUB_TOKEN }}
+  provisioning_token: ${{ secrets.PROVISIONING_TOKEN }}
+jobs:
+  restart-app:
+    name: Restart Application
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Set Github Environment
+        uses: ./.github/workflows/actions/setvars
+      - name: Checkout Provisioning CLI
+        uses: ./.github/workflows/actions/checkout-provisioningcli
+      - name: Restart Application
+        uses: ./.github/actions/Actions-Provisioning@v2
+        env:
+          FOUNDATION: ${{ github.event.inputs.foundation }}
+          PLATFORM: ${{ github.event.inputs.platform }}
+          PCF_ENV: ${{ github.event.inputs.pcfEnvironment }}
+          APP_ENV: ${{ github.event.inputs.appEnvironment }}
+          inputChangeTicket: ${{ github.event.inputs.changeTicket }}
+          inputIncidentTicket: ${{ github.event.inputs.incidentTicket }}
+        with:
+          provisioning_token: ${{ secrets.PROVISIONING_TOKEN }}
+          client_id: ${{ secrets.OAUTH2_CLIENT_ID }}
+          client_secret: ${{ secrets.OAUTH2_CLIENT_SECRET }}
+          provisioning_cli_version: 'latest'
+          script: .github/workflows/scripts/pcf_restart.sh
