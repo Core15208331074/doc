@@ -1,0 +1,11 @@
+Some question examples
+  We can give a few examples of such questions:
+  Design a URL shortening service like bit.ly.
+  How would you implement the Google search?
+  Design a client-server application which allows people to play chess with one another.
+  How would you store the relations in a social network like Facebook and implement a feature where one user receives notifications when their friends like the same things as they do?
+
+The typical outcome of such a discussion is a high-level architecture addressing the goals and constraints in the question.
+  interviewer will want to discuss bottlenecks and other common problems.
+
+
