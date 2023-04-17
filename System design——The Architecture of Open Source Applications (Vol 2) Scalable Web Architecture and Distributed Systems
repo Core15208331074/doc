@@ -1,3 +1,8 @@
 The Architecture of Open Source Applications (Vol 2)Scalable Web Architecture and Distributed Systems
   1.1. Principles of Web Distributed Systems Design
-  
+  Availability
+  Performance
+  Reliability
+  Scalability
+  Manageability
+  Cost
