@@ -1,0 +1,45 @@
+Step 1 — Understand the Goals
+What is the goal of the system?
+Who are the users of the system? What do they need it for? How are they going to use it?
+What are the inputs and outputs of the system?
+
+Step 2 — Establish the Scope
+you should describe the feature set you’ll discuss
+Do we want to discuss the end-to-end experience or just the API?
+What clients do we like to support (mobile, web, etc.)?
+Do we require authentication? Analytics? Integrating with existing systems?
+
+Step 3 — Design for the Right Scale
+What is the expected read-to-write ratio?
+How many concurrent requests should we expect?
+What’s the average expected response time?
+What’s the limit of the data we allow users to provide?
+
+Step 4 — Start High-Level, then Drill-Down
+Start with covering the end-to-end process based on the goals you’ve established. 
+This might include detailing different clients, APIs, backend services, offline processes, network architecture, 
+and data stores and how they all come together to meet the requirements.
+Identify the system’s entry points, such as:
+	User interaction
+	External API calls
+	Offline processes
+	
+Step 5 — Data Structures and Algorithms (DS&A)
+URL shortener? Makes me think of a hashing function. Oh, you need it to scale? Sharding might help. 
+Concurrency? Redundancy? Generating keys becomes even more complicated. The same goes for designing an analytics system, 
+a news feed, or a Q&A forum, each with its own set of common DS&A.
+
+Step 6 — Tradeoffs
+Being able to describe them in real-time, as you’re suggesting solutions, shows that you understand that complex systems often require compromises and allow you to demonstrate your knowledge regarding the pros and cons of different approaches. Since there’s no one correct answer, having this discussion will give your interviewer the impression that you’re practical and will use the right tool for the job.
+A few common examples might include the following:
+What type of database would you use and why?
+What caching solutions are out there? Which would you choose and why?
+What frameworks can we use as infrastructure in your ecosystem of choice?
+
+
+
+
+
+
+
+
