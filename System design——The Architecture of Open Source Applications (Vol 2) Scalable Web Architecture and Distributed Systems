@@ -6,3 +6,76 @@ The Architecture of Open Source Applications (Vol 2)Scalable Web Architecture an
   Scalability
   Manageability
   Cost
+  1.2 The Basics 
+  1.2.1 core factors
+   what are the right pieces, how these pieces fit together, and what are the right tradeoffs.
+   services, redundancy, partitions, and handling failure
+  1.2.2 Example: Image Hosting Application
+   challenges: cost-effective, highly available, and has low latency (fast retrieval).
+   two key parts: 
+     ①the ability to upload 
+     ②the ability to query
+   We care most about having vert fast delivery when an image is requested by some APIs or some link of web site. 
+   Other important aspects of the system are:
+   In terms of image count: no limit to the number of images, that is for store scalability
+   Low latency for downloads and requests
+   If user uploads an images, the images should be always there.
+   System should be easy to maintain
+   Image system has no high profit margins,so it should be cost-effective
+
+
+Service design
+  decouple 解耦 
+  Service-Oriented Architecture (SOA)
+  Deconstructing 解构
+  Deconstructing a sys to a set of complementary helps to establish clear relationships between services.
+  underlying environment 底层环境
+  isolate problems 隔离问题
+  it is similar to object-oriented design for programming. 
+  for scale the the service from one abother,
+  split write and read fundtion into its own service. these two service should share resources
+  a 3:1 download-speed:upload-speed ratio
+  eventually consistent 最终一致
+  reading is faster than writing becasue read files will typically be read from cache, and writes will have to go to disk eventually (and perhaps be written several times in eventually consistent situations). Even if everything is in memory or read from disks (like SSDs), database writes will almost always be slower than reads. 
+  limit of connection
+    default 500 for writing
+    read,the web server can switch reading server faster and switch between clients quickly serving many more requests per second than the max number of connections 
+    write,tend to maintain an open connection the duration uploading.so that web server could only handle 500 such simultaneous writes.
+  split out write and read
+  so that scale them independently and make it easier to troubleshoot and scale a problem like slow reads.
+  free to optimize their own performance,for example, queuing up requests, or caching popular images
+  shards——distributing users across different shards such that each shard can only handle a set number of users.
+    the function down from one of the shards only will impact those own users in its own shards. 
+
+Redundancy 冗余
+	Redundancy of data and service
+        1.remove single points of failure;
+	2.provide a backup or spare functionality if needed in a crisis	
+	3.For example, if there are two instances of the same service running in production, and one fails or degrades, the system can failover故障转移 to the healthy copy. Failover can happen automatically or require manual intervention.
+	shared-nothing architecture（which is meaning there is no centrail brain managing state or coordination activities and there is no signle failure in these systems）
+
+Partitions
+	issue:
+		on a single server, it is not fit to store very large data set.
+		an operation request too many computing resources,diminishing perfermance and make it necessary to add capacity.
+	scale vertically or horizontally
+		Scaling vertically means adding more resources to an individual server. it means adding more or bigger hard drivers.
+			also means move computation to a bigger server with faster CPU or more Memory.
+		Scaling horizontally is to add more nodes.
+			splitting operation or load across some additional nodes.
+			it is to prevent being cumbersome to modify and separate out the context. 
+			Break up your services into partitions or shards.
+				The partitions can be distributed such that each logical set of functionality is separate;
+				for example,geographic boundaries, or by another criteria like non-paying versus paying users
+			advantage：they provide a service or data store with added capacity.
+	      		Note:
+			    a single server replaced by multiple servers.
+			    adding additional server as the disk of server become full.
+			Name scheme:
+				it tied an filename of image to the server containing it.
+				the name could be formed from a consistent hashing scheme mapped across the servers.
+				Or alternatively, each image could be assigned an incremental ID, so that when a client makes a request for an image, the image retrieval service only needs to maintain the range of IDs that are mapped to each of the servers
+			challenges of multiple servers:
+				 data locality:in distributed systems,we have potential problems to spread data across multiple servers.
+					 since as any time the data needed maybe is not in local and the closer the data to the operation or point of computation, the better the performance of the system.
+				 	 so it could be forcing the servers to perform a costly fetch of the required information across the network.
