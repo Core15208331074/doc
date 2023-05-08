@@ -1,0 +1,45 @@
+React Core component: react and react-dom
+React Core Concepts
+	Components：
+		User interfaces can be broken down into smaller building blocks called components.
+		In React, components are functions.
+	Props：
+		data displaying in react and data transferred from parent to child component.
+		Props is an object.
+	State:
+		add interactivity with state and event handlers.
+			for example: onClick and define a function to "handle" events whenever they are triggered.
+		React has a set of functions called hooks. Hooks allow you to add additional logic such as state.
+			for example: React.useState()
+
+NextJs:
+	1.a framewaork to help people to build a react application and optimizations that help make both the development process and final application faster.
+	How Next.js Works:
+		1.From Development to Production
+		2.compiling, minifying, Bunding(the process of resolving the web of dependencies and merging (or ‘packaging’) the files (or modules) into optimized bundles)
+		Code Splitting, 
+		3.Build time (or build step) is the name given to a series of steps that prepare your application code for production.
+		4.Runtime (or request time) refers to the period of time when your application runs in response to a user’s request, after your application has been built and deployed.
+		5.Client and Server
+		6.Rendering:Pre-Rendering, Rendering
+			Client-Side Rendering vs. Pre-Rendering
+		7.
+	2.quick start
+		Create a new page using the integrated file system routing.
+		Learn how to use the Link component to enable client-side navigation between pages.
+		Learn about built-in support for code splitting and prefetching.
+		
+		Assets, Metadata, and CSS
+			How to add static files (images, etc) to Next.js.
+			How to customize what goes inside the <head> for each page.
+			How to create a reusable React component which is styled using CSS Modules.
+			How to add global CSS in pages/_app.js.
+			Some useful tips for styling in Next.js.
+
+		Pre-render
+		Each generated HTML is associated with minimal JavaScript code necessary for that page. When a page is loaded by the browser, its JavaScript code runs and makes the page fully interactive. (This process is called hydration.)
+		Static Generation is the pre-rendering method that generates the HTML at build time. The pre-rendered HTML is then reused on each request.
+		Server-side Rendering is the pre-rendering method that generates the HTML on each request.
+	fetch data(using Server rendering) 			
+	Dynamic Routes
+			
