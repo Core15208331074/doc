@@ -134,4 +134,12 @@ Explore Azure AKS Cluster Resources
 
   # Access Application
   http://<External-IP-from-get-service-output>
+
+
+ Docker Fundamaentals
+
+ Kubernetes Fundamentals
+    Concepts: 01.Pods  02.ReplicaSets  03.Deployments  04.Services
+    What is a POD ?
+    What is a Multi-Container POD?
     
