@@ -1,1 +1,4 @@
-Istio 
+Istio: 
+  Routing traffic, both within a single cluster and across clusters, affects performance and enables better deployment strategy.
+  Istio generates detailed telemetry for all communications within a service mesh. This telemetry provides observability of service behavior, empowering operators to troubleshoot, maintain, and optimize their applications.
+  Microservices have particular security needs, including protection against man-in-the-middle attacks, flexible access controls, auditing tools, and mutual TLS.
