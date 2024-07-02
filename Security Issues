@@ -6,6 +6,8 @@ or they just could event redirect a pizza to an attacker`s address.
 Tika referrence Log4j as bug
 try to exclude the referrence of log4j
 
+Distributed Transaction
+
 troubleshooting with log option, for example: kubectl logs -[]
 docker logs ...
 
