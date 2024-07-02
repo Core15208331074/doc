@@ -3,7 +3,6 @@ it is a vulnerability where an attacker performs actions while impersonating ano
 For example, transferring funds to attacker`s account; change victim`s email address. 
 or they just could event redirect a pizza to an attacker`s address.
 
-
 Tika referrence Log4j as bug
 try to exclude the referrence of log4j
 
