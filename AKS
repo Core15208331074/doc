@@ -141,6 +141,7 @@ Explore Azure AKS Cluster Resources
  Kubernetes Fundamentals
     Concepts: 01.Pods  02.ReplicaSets  03.Deployments  04.Services
     What is a POD ?
-        A Pod (as in a pod of whales or pea pod) is a group of one or more containers, with shared storage and network resources, and a specification for how to run the containers.
+        A Pod is a group of one or more containers, with shared storage and network resources, and a specification for how to run the containers.
     What is a Multi-Container POD?
+        
     
